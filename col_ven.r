@@ -39,10 +39,10 @@ WDI(country="all",indicator="NY.GDP.PCAP.KD", start=1960, end=2017) %>%
   #Ahora le decimos a ggplot que tipo de grafico nos deberia mostrar
   geom_point(aes(size=pop), show.legend=F)+
   geom_point()+
-    #Le ponemos tags a los puntos con los nombres de los paises
+  #Le ponemos tags a los puntos con los nombres de los paises
   #geom_text(aes(label=country.x), vjust=-.2, size=5)+
   #Con eso le damos mejores colores a la grafica
-  scale_x_log10()+
+  #scale_x_log10()+
   scale_colour_brewer(palette="Set1") +
   #Le damos una estetica simple a la grafica, sin color de fondo
   theme_classic()+
@@ -50,13 +50,12 @@ WDI(country="all",indicator="NY.GDP.PCAP.KD", start=1960, end=2017) %>%
   #Ahora usamos la animacion de gganimate
   labs(title="Colombia y Venezuela entre 1960 y 2017",
        subtitle = '{frame_time} \n Poblacion = Tamano del punto' ,
-       x = 'Log PIB per capita',
+       x = 'PIB per capita',
        y = 'Expectativa de vida',
        caption = "Fuente: World Development Indicators")+ #Le ponemos la variable de animacion al titulo
   transition_time(year.x)+ #Seleccionamos la variable de animacion
-  shadow_wake(0.7, alpha=0.5)+
+  shadow_wake(0.8, alpha=0.5)+
   ease_aes('linear') #Tipo de animacion
 
 # Asi se guarda como gif
-anim_save("col_ven.gif",animation=last_animation())
-
+anim_save("col_ven.gif", animation = last_animation())
