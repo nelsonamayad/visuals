@@ -1,13 +1,8 @@
----
-title: "La trayectoria de dos contratos sociales"
-subtitle: "Colombia y Venezuela entre 1960 y 2017"
-author: "Nelson Amaya"
-output: 
-  html_document:
-      theme: readable
-      code_folding: hide
+#####################################################
+#### Las trayectorias de dos contratos sociales: ####
+#### Colombia y Venezuela entre 1960 y 2017      ####
+#####################################################
 
-```{r, echo=T, message=FALSE}
 # Cargar/Instalar paquetes ####
 library(WDI)
 library(tidyverse)
@@ -16,9 +11,8 @@ library(gifski)
 library(RColorBrewer)
 library(ggrepel)
 
-# Animacion con World Development Indicators ####
- 
-#Primer paso: descargar los datos de GDP per capita usando WDI()
+# Animacion gganimante y datos de World Development Indicators ####
+# Primer paso: descargar los datos de GDP per capita usando WDI()
 WDI(country="all",indicator="NY.GDP.PCAP.KD", start=1960, end=2017) %>%
   #filtramos para los dos paises de interes
   filter(country=="Colombia" | country=="Venezuela, RB") %>%
@@ -65,4 +59,4 @@ WDI(country="all",indicator="NY.GDP.PCAP.KD", start=1960, end=2017) %>%
 
 # Asi se guarda como gif
 anim_save("col_ven.gif",animation=last_animation())
-```
+
