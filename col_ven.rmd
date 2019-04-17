@@ -65,3 +65,4 @@ WDI(country="all",indicator="NY.GDP.PCAP.KD", start=1960, end=2017) %>%
 
 # Asi se guarda como gif
 anim_save("col_ven.gif",animation=last_animation())
+```
