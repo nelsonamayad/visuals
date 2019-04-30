@@ -25,20 +25,19 @@ read.csv("https://raw.githubusercontent.com/fsolt/swiid/master/data/swiid_summar
                        !is.na(lac) ~ "LAC")) %>%
   mutate(t = if_else(country=="Colombia", "Colombia", t) %>% factor()) %>% 
     #if_else(is.na(oecd), "LAC", "OECD") %>%  factor()) %>%
-  ggplot(aes(x=reorder(country, abs_red),y=abs_red, color=t))+
+  ggplot(aes(x=reorder(country, abs_red),y=abs_red, color=t, shape=t))+
   geom_point()+
   geom_hline(yintercept=0, linetype="dashed")+
   coord_flip()+
   theme(legend.position = "top", panel.background = element_blank(), legend.title = element_blank())+
   scale_color_brewer(palette="Set1")+
   labs(title="Los que redistribuyen con impuestos y los que no (1990-2017)",
-       subtitle='Si > 0, Gini despues de impuestos es menor que antes de impuestos \n {frame_time}',
+       subtitle='Cuando se mueve -> Gini baja \n {frame_time}',
        x = "",
        y = "Redistribucion absoluta: Gini market income - Gini disposable income",
        caption = "Source: SWIID Solt (2019) \n OSF. https://osf.io/3djtq")+
   transition_time(year)+ #Seleccionamos la variable de animacion
   shadow_wake(0.7, alpha=0.5)+
   ease_aes('linear') #Tipo de animacion
-
-#Guardar el gif
+  
 anim_save("swiid.gif",animation=last_animation()) 
