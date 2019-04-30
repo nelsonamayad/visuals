@@ -37,7 +37,7 @@ read.csv("https://raw.githubusercontent.com/fsolt/swiid/master/data/swiid_summar
        caption = "Source: SWIID Solt (2019) \n OSF. https://osf.io/3djtq")+
   transition_time(year)+ 
   shadow_wake(0.7, alpha=0.5)+
-  ease_aes('linear') #Tipo de animacion
+  ease_aes('linear')
 
 # Guardar la animacion  
 anim_save("swiid.gif",animation=last_animation()) 
