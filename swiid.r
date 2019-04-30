@@ -31,7 +31,7 @@ read.csv("https://raw.githubusercontent.com/fsolt/swiid/master/data/swiid_summar
   theme(legend.position = "top", panel.background = element_blank(), legend.title = element_blank())+
   scale_color_brewer(palette="Set1")+
   labs(title="Los que redistribuyen con impuestos y los que no (1990-2017)",
-       subtitle='Cuando se mueve -> Gini baja \n {frame_time}',
+       subtitle='Cuando se mueve -> Impuestos disminuyen la desigualdad \n {frame_time}',
        x = "",
        y = "Redistribucion absoluta: Gini market income - Gini disposable income",
        caption = "Source: SWIID Solt (2019) \n OSF. https://osf.io/3djtq")+
