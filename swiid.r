@@ -24,7 +24,6 @@ read.csv("https://raw.githubusercontent.com/fsolt/swiid/master/data/swiid_summar
   mutate(t = case_when(!is.na(oecd) ~ "OECD",
                        !is.na(lac) ~ "LAC")) %>%
   mutate(t = if_else(country=="Colombia", "Colombia", t) %>% factor()) %>% 
-    #if_else(is.na(oecd), "LAC", "OECD") %>%  factor()) %>%
   ggplot(aes(x=reorder(country, abs_red),y=abs_red, color=t, shape=t))+
   geom_point()+
   geom_hline(yintercept=0, linetype="dashed")+
@@ -36,8 +35,9 @@ read.csv("https://raw.githubusercontent.com/fsolt/swiid/master/data/swiid_summar
        x = "",
        y = "Redistribucion absoluta: Gini market income - Gini disposable income",
        caption = "Source: SWIID Solt (2019) \n OSF. https://osf.io/3djtq")+
-  transition_time(year)+ #Seleccionamos la variable de animacion
+  transition_time(year)+ 
   shadow_wake(0.7, alpha=0.5)+
   ease_aes('linear') #Tipo de animacion
-  
+
+# Guardar la animacion  
 anim_save("swiid.gif",animation=last_animation()) 
